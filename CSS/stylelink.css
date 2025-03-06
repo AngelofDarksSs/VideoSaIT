@@ -1,0 +1,82 @@
+/* Resetare stiluri implicite */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Stilizare generală */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #2a2a72, #009ffd);
+    color: white;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header stilizat */
+header {
+    background: rgba(30, 30, 60, 0.9);
+    padding: 20px;
+    font-size: 26px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
+}
+
+/* Container principal */
+.container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Player video responsiv */
+.video-player {
+    position: relative;
+    width: 90vw;  /* Ocupă 90% din lățimea ecranului */
+    max-width: 1200px; /* Max size pentru ecrane mari */
+    height: 50vh; /* Ajustare la 50% din înălțimea ecranului */
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Video */
+video {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Footer */
+footer {
+    padding: 15px;
+    background: rgba(30, 30, 60, 0.9);
+    font-size: 14px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries pentru ecrane mici */
+@media (max-width: 768px) {
+    .video-player {
+        width: 95vw; /* Se extinde mai mult pe ecrane mici */
+        height: 40vh; /* Se micșorează înălțimea */
+    }
+}

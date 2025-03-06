@@ -4,64 +4,129 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AniDark</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #121212;
-            color: white;
-        }
-        header {
-            background-color: #1f1f1f;
-            padding: 20px;
-            text-align: center;
-            font-size: 24px;
-        }
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 20px;
-        }
-        .card {
-            background-color: #2a2a2a;
-            border-radius: 10px;
-            padding: 15px;
-            margin: 15px;
-            width: 300px;
-            text-align: center;
-        }
-        .card img {
-            width: 100%;
-            border-radius: 10px;
-        }
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #1f1f1f;
-        }
-    </style>
+    <link rel="stylesheet" href="/CSS/style.css">
 </head>
 <body>
-    <header>AniDark</header>
-    <div class="container">
-        <div class="card">
-            <img src="https://m.media-amazon.com/images/M/MV5BNmI1MmYxNWQtY2E5NC00ZTlmLWIzZGEtNzM1YmE3NDA5NzhjXkEyXkFqcGc@._V1_.jpg" alt="Imagine anime">
-            <h3><a href='jujutsu-kaisen.html' style='color: white; text-decoration: none;'>Jujutsu Kaisen</a></h3>
-            <p>Un student de liceu devine parte dintr-o lume secretă a blestemelor și vrăjitorilor.</p>
+    <header> 
+        <h1>AniDark</h1>
+    </header>
+    
+    <main>
+        <div class="container">
+            <a href="/link/jujutsu-kaisen.html" class="card">
+                <img src="https://m.media-amazon.com/images/M/MV5BNmI1MmYxNWQtY2E5NC00ZTlmLWIzZGEtNzM1YmE3NDA5NzhjXkEyXkFqcGc@._V1_.jpg" alt="Jujutsu Kaisen">
+                <h3>Jujutsu Kaisen</h3>
+                <p>Un student de liceu devine parte dintr-o lume secretă a blestemelor și vrăjitorilor.</p>
+            </a>
+            
+            <a href="/link/solo-leveling.html" class="card">
+                <img src="https://m.media-amazon.com/images/I/81jS951SgDL.jpg" alt="Solo Leveling">
+                <h3>Solo Leveling</h3>
+                <p>Un vânător slab descoperă un sistem misterios care îl ajută să devină cel mai puternic.</p>
+            </a>
+            
+            <a href="/link/one-piece.html" class="card">
+                <img src="https://images.justwatch.com/poster/310515848/s718/one-piece.jpg" alt="One Piece">
+                <h3>One Piece</h3>
+                <p>Aventurile piraților în căutarea comorii supreme, One Piece.</p>
+            </a>
         </div>
-        <div class="card">
-            <img src="https://m.media-amazon.com/images/I/81jS951SgDL.jpg" alt="Imagine anime">
-            <h3><a href='solo-leveling.html' style='color: white; text-decoration: none;'>Solo Leveling</a></h3>
-            <p>Un vânător slab descoperă un sistem misterios care îl ajută să devină cel mai puternic.</p>
-        </div>
-        <div class="card">
-            <img src="https://images.justwatch.com/poster/310515848/s718/one-piece.jpg" alt="Imagine anime">
-            <h3><a href='one-piece.html' style='color: white; text-decoration: none;'>One Piece</a></h3>
-            <p>Aventurile piraților în căutarea comorii supreme, One Piece.</p>
-        </div>
-    </div>
-    <footer>© 2025 Seriale Anime - Toate drepturile sunt ale mele.</footer>
+    </main>    
+    <footer>
+        © 2025 Seriale Anime - Toate drepturile sunt ale mele.
+    </footer>
 </body>
 </html>
+
+<style>
+/* Resetare stiluri implicite */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #000428, #004e92);
+    color: white;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    background-color: rgba(31, 31, 31, 0.9);
+    padding: 20px;
+    font-size: 26px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Container principal */
+main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+/* Card Anime */
+.card {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border-radius: 15px;
+    overflow: hidden;
+    width: 280px;
+    text-align: center;
+    padding: 15px;
+    margin: 15px;
+    box-shadow: 0px 4px 15px rgba(91, 33, 182, 0.8);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    text-decoration: none;
+    color: white;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0px 10px 25px rgba(144, 12, 249, 0.9);
+}
+
+/* Imaginea Anime */
+.card img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}
+
+/* Titlul Anime */
+.card h3 {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Descriere Anime */
+.card p {
+    font-size: 14px;
+    opacity: 0.8;
+    padding: 10px 0;
+}
+
+/* Footer */
+footer {
+    padding: 15px;
+    background-color: rgba(31, 31, 31, 0.9);
+    font-size: 14px;
+    opacity: 0.8;
+    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.5);
+}
+</style>
