@@ -1,18 +1,71 @@
-.container {
+/* Resetare stiluri implicite */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #000428, #004e92);
+    color: white;
+    text-align: center;
+    min-height: 100vh;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+/* Container Header + Nav */
+.header-nav {
+    background-color: rgba(31, 31, 31, 0.9);
+    padding: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.header-nav h1 {
+    margin-bottom: 10px;
+}
+
+/* Navigation Bar */
+nav {
+    display: flex;
     justify-content: center;
     gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+nav a:hover {
+    color: #f39c12;
+    transform: scale(1.1);
+    box-shadow: 0px 4px 10px rgba(243, 156, 18, 0.8);
+}
+
+/* Container principal */
+main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     padding: 20px;
 }
 
+/* Card Anime */
 .card {
     background: linear-gradient(135deg, #1a1a2e, #16213e);
     border-radius: 15px;
     overflow: hidden;
-    width: 30%; /* Cardurile ocupă 30% din lățimea paginii */
-    max-width: 400px; /* Cardurile nu vor depăși 400px */
-    min-width: 250px; /* Cardurile nu vor fi mai mici de 250px */
+    width: 30%;
+    max-width: 400px;
+    min-width: 250px;
     text-align: center;
     padding: 15px;
     box-shadow: 0px 4px 15px rgba(91, 33, 182, 0.8);
@@ -21,14 +74,61 @@
     color: white;
 }
 
+.card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0px 10px 25px rgba(144, 12, 249, 0.9);
+}
+
+/* Imaginea Anime */
+.card img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}
+
+/* Titlul Anime */
+.card h3 {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Descriere Anime */
+.card p {
+    font-size: 14px;
+    opacity: 0.8;
+    padding: 10px 0;
+}
+
+/* Footer */
+footer {
+    padding: 15px;
+    background-color: rgba(31, 31, 31, 0.9);
+    font-size: 14px;
+    opacity: 0.8;
+    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
 @media screen and (max-width: 900px) {
     .card {
-        width: 45%; /* Pe ecrane mai mici, cardurile ocupă 45% */
+        width: 45%;
     }
 }
 
 @media screen and (max-width: 600px) {
     .card {
-        width: 90%; /* Pe ecrane foarte mici, cardurile ocupă aproape toată lățimea */
+        width: 90%;
     }
 }
