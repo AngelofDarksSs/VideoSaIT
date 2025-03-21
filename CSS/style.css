@@ -1,10 +1,11 @@
-/* Resetare stiluri implicite */
+/* 🔄 Resetare stiluri implicite */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* 🌑 Dark Mode (Implicit) */
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(135deg, #000428, #004e92);
@@ -13,20 +14,22 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    transition: background 0.4s ease-in-out, color 0.4s ease-in-out;
 }
 
-/* Container Header + Nav */
+/* 🌑 Header + Navbar */
 .header-nav {
     background-color: rgba(31, 31, 31, 0.9);
     padding: 15px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    transition: background 0.4s ease-in-out;
 }
 
 .header-nav h1 {
     margin-bottom: 10px;
 }
 
-/* Navigation Bar */
+/* 🌑 Navigation Bar */
 nav {
     display: flex;
     justify-content: center;
@@ -49,7 +52,7 @@ nav a:hover {
     box-shadow: 0px 4px 10px rgba(243, 156, 18, 0.8);
 }
 
-/* Container principal */
+/* 🌑 Container principal */
 main {
     flex-grow: 1;
     display: flex;
@@ -58,7 +61,7 @@ main {
     padding: 20px;
 }
 
-/* Card Anime */
+/* 🌑 Card Anime */
 .card {
     background: linear-gradient(135deg, #1a1a2e, #16213e);
     border-radius: 15px;
@@ -79,7 +82,7 @@ main {
     box-shadow: 0px 10px 25px rgba(144, 12, 249, 0.9);
 }
 
-/* Imaginea Anime */
+/* 🌑 Imagine Anime */
 .card img {
     width: 100%;
     border-radius: 10px;
@@ -90,29 +93,121 @@ main {
     transform: scale(1.1);
 }
 
-/* Titlul Anime */
+/* 🌑 Titlu Anime */
 .card h3 {
     margin-top: 10px;
     font-size: 20px;
     font-weight: bold;
 }
 
-/* Descriere Anime */
+/* 🌑 Descriere Anime */
 .card p {
     font-size: 14px;
     opacity: 0.8;
     padding: 10px 0;
 }
 
-/* Footer */
+/* 🌑 Footer */
 footer {
     padding: 15px;
     background-color: rgba(31, 31, 31, 0.9);
     font-size: 14px;
     opacity: 0.8;
     box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.5);
+    transition: background 0.4s ease-in-out;
 }
 
+/* 🌑 Dark Mode Switch */
+.dark-mode-switch {
+    display: flex;
+    align-items: center;
+}
+
+/* Ascundem checkbox-ul */
+.dark-mode-switch input {
+    display: none;
+}
+
+/* Stilizare container switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+    margin-left: 10px;
+}
+
+/* Stilizare slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+/* Butonul mic al slider-ului */
+.slider::before {
+    position: absolute;
+    content: "🌞"; /* Inițial afișează soarele */
+    font-size: 16px;
+    width: 22px;
+    height: 22px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Dark Mode activat */
+input:checked + .switch .slider {
+    background-color: #333;
+}
+
+/* Butonul se mută la dreapta și devine lună */
+input:checked + .switch .slider::before {
+    transform: translateX(24px);
+    content: "🌙";
+}
+
+/* 🌞 Light Mode - alb + violet */
+.light-mode {
+    background: #ffffff !important; /* Fundal alb */
+    color: #000000 !important; /* Text negru */
+}
+
+.light-mode .header-nav {
+    background-color: #d6b3ff !important; /* Violet deschis */
+    color: #000000 !important;
+}
+
+.light-mode nav a {
+    color: #000000 !important; /* Linkuri negre */
+}
+
+.light-mode footer {
+    background-color: #d6b3ff !important; /* Violet deschis */
+    color: #000000 !important;
+}
+
+.light-mode .card {
+    background: linear-gradient(135deg, #f2e6ff, #d6b3ff) !important; /* Gradient alb-violet */
+    color: #000000 !important;
+}
+
+.light-mode .card h3 {
+    color: #4a0072 !important; /* Violet mai închis */
+}
+
+/* 🌐 Container */
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -121,6 +216,7 @@ footer {
     padding: 20px;
 }
 
+/* 📱 Responsive Design */
 @media screen and (max-width: 900px) {
     .card {
         width: 45%;
