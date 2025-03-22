@@ -7,19 +7,21 @@
     <link rel="stylesheet" href="../CSS/stylelinksololeveling.css">
 </head>
 <body>
+    <div id="particles-js"></div>  <!-- Container pentru Particles.js -->
     <header>
-        Solo Leveling
+        <span>Solo Leveling</span>
         <label class="switch">
-            <input type="checkbox" id="dark-mode-toggle">
+            <input type="checkbox" id="theme-toggle">
             <span class="slider round"></span>
         </label>
     </header>
 
     <main class="container">
-        <!-- Player video -->
         <section class="video-player">
             <iframe 
                 id="video-frame"
+                width="640" 
+                height="384" 
                 src="https://video.sibnet.ru/shell.php?videoid=5397246" 
                 frameborder="0" 
                 scrolling="no" 
@@ -27,7 +29,6 @@
             </iframe>
         </section>
         
-        <!-- Meniu pentru selectarea episodului -->
         <div class="episode-selector">
             <label for="episode">Alege episodul:</label>
             <select id="episode">
@@ -46,6 +47,9 @@
         <a href="../index.html">Înapoi la pagina principală</a>
     </footer>
 
+    <!-- Import Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../JS/particles-config.js"></script>
     <script src="../JS/Video1.js"></script>
 </body>
 </html>

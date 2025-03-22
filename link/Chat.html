@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Chat Modern</title>
+    <link rel="stylesheet" href="../CSS/stylelinkchat.css">
+</head>
+<body>
+    <div id="particles-js"></div>  <!-- Container pentru Particles.js -->
+    <header>
+        Live Chat
+        <label class="switch">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider"></span>
+        </label>
+    </header>
+
+    <div class="chat-container">
+        <div class="chat-box" id="chat-box"></div>
+        <div class="input-area">
+            <input type="text" id="message-input" placeholder="Scrie un mesaj...">
+            <button id="send-btn">➤</button>
+        </div>
+    </div>
+
+    <footer>
+        <a href="../index.html">Înapoi la pagina principală</a>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../JS/particles-config.js"></script>
+    <script src="../JS/Chat.js"></script>
+</body>
+</html>
