@@ -1,0 +1,77 @@
+/* Resetarea stilurilor implicite */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Stiluri globale */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* Header */
+h1 {
+    margin-top: 20px;
+    font-size: 2rem;
+    color: #333;
+}
+
+/* Stiluri pentru tabel */
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Stiluri pentru capul tabelului */
+th {
+    background-color: #900cf9e6;
+    color: white;
+    padding: 15px;
+    font-size: 1.1rem;
+    text-align: left;
+}
+
+/* Stiluri pentru celulele tabelului */
+td {
+    padding: 12px;
+    text-align: left;
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Schimbarea culorii la hover pe rândurile tabelului */
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Borduri pentru tabel și celule */
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+/* Stiluri pentru tabel în mobil (responsive) */
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}

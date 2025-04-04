@@ -1,23 +1,46 @@
 <?php
 session_start();
-include('db.php'); // Include fișierul de conectare la baza de date
+require 'db.php'; // Asigură-te că acest fișier conține conexiunea corectă la BD!
 
-if (isset($_POST['login'])) {
-    // Preia datele din formular
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
 
-    // Căutăm utilizatorul în baza de date
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
-    $stmt->execute(['email' => $email]);
-    $user = $stmt->fetch();
+    if (!empty($email) && !empty($password)) {
+        // Căutăm utilizatorul în baza de date
+        $stmt = $pdo->prepare("SELECT id, username, password FROM users WHERE email = ?");
+        $stmt->execute([$email]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($user && password_verify($password, $user['password'])) {
-        // Dacă există utilizatorul și parola este corectă
-        $_SESSION['user_id'] = $user['id'];
-        header('Location: index.php'); // Redirecționează către pagina principală
+        // Debugging: Afișăm datele găsite
+        echo "<pre>";
+        print_r($user);
+        echo "</pre>";
+
+        if ($user) {
+            echo "<p>Utilizator găsit: " . $user['username'] . "</p>";
+
+            // Verificăm parola
+            if (password_verify($password, $user['password'])) {
+                $_SESSION["user_id"] = $user["id"];
+                $_SESSION["username"] = $user["username"];
+                
+                // Debugging: Verificăm sesiunea
+                echo "<pre>";
+                print_r($_SESSION);
+                echo "</pre>";
+                
+                // Redirecționează la pagina principală
+                header("Location: ../index.php");
+                exit;
+            } else {
+                $error = "Parola incorectă!";
+            }
+        } else {
+            $error = "Email-ul nu este înregistrat!";
+        }
     } else {
-        $error = "Email sau parolă greșite!";
+        $error = "Toate câmpurile sunt obligatorii!";
     }
 }
 ?>
@@ -28,17 +51,19 @@ if (isset($_POST['login'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="../CSS/style.css">
 </head>
 <body>
-    <form method="POST">
-        <label for="email">Email:</label>
-        <input type="email" name="email" required><br>
+    <form action="login.php" method="POST">
+        <h2>Autentificare</h2>
+        <?php if (isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
+        <label>Email:</label>
+        <input type="email" name="email" required>
         
-        <label for="password">Parolă:</label>
-        <input type="password" name="password" required><br>
-
-        <button type="submit" name="login">Autentifică-te</button>
+        <label>Parolă:</label>
+        <input type="password" name="password" required>
+        
+        <button type="submit">Login</button>
     </form>
-    <?php if (isset($error)) echo "<p style='color: red;'>$error</p>"; ?>
 </body>
 </html>

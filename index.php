@@ -16,13 +16,14 @@ session_start();
     <div class="header-nav"> 
         <h1>AniDark</h1>
         <nav>
-            <a href="#orar">Orarul Serialelor</a>
+            <a href="DataBaze.php">DataBaze</a>
             <a href="link/Chat.php">Chat</a>
             <a href="link/tech-support.php">Tech Support</a>
             <a href="#link-uri">Link-uri</a>
 
             <?php if (isset($_SESSION["user_id"]) && !empty($_SESSION["user_id"])): ?>
-                <a href="logout.php">Logout</a>
+                <a href="link/profile.php">Profil</a>
+                <a href="link/logout.php">Logout</a>
             <?php else: ?>
                 <a href="link/login.php">Login</a>
                 <a href="link/register.php">Înregistrare</a>
