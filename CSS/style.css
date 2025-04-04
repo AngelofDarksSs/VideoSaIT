@@ -215,6 +215,29 @@ input:checked + .switch .slider::before {
     gap: 20px;
     padding: 20px;
 }
+.auth-link {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Login și Înregistrare în stil buton */
+.auth-link:nth-child(1) { /* Login */
+    background-color: #3498db; /* Albastru */
+    color: white;
+}
+
+.auth-link:nth-child(2) { /* Înregistrare */
+    background-color: #2ecc71; /* Verde */
+    color: white;
+}
+
+.auth-link:hover {
+    opacity: 0.8;
+}
 
 #particles-js {
     position: fixed;

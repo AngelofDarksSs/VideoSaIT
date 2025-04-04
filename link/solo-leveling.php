@@ -44,7 +44,7 @@
     </main>
 
     <footer>
-        <a href="../index.html">Înapoi la pagina principală</a>
+        <a href="../index.php">Înapoi la pagina principală</a>
     </footer>
 
     <!-- Import Particles.js -->

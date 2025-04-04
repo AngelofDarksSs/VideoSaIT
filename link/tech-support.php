@@ -11,7 +11,7 @@
         <h1>Tech Support</h1>
         <nav>
             <a href="index.html">Acasă</a>
-            <a href="tech-support.html">Tech Support</a>
+            <a href="tech-support.php">Tech Support</a>
         </nav>
     </header>
     

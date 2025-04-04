@@ -25,7 +25,7 @@
     </div>
 
     <footer>
-        <a href="../index.html">Înapoi la pagina principală</a>
+        <a href="../index.php">Înapoi la pagina principală</a>
     </footer>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="../JS/particles-config.js"></script>
