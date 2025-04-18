@@ -10,6 +10,8 @@ session_start();
     <link rel="stylesheet" href="CSS/style.css">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="JS/First.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 <body>
     <div id="particles-js"></div>  <!-- Container pentru Particles.js -->
@@ -62,15 +64,14 @@ session_start();
         </div>
 
         <!-- 🔽 Formular AJAX pentru sugestii -->
-        <section class="suggestion-form">
-            <h2>Trimite o sugestie de anime</h2>
-            <form id="animeSuggestionForm">
-                <input type="text" name="anime_name" id="anime_name" placeholder="Numele anime-ului" required>
-                <textarea name="anime_reason" id="anime_reason" placeholder="De ce ar trebui adăugat?" required></textarea>
-                <button type="submit">Trimite</button>
-            </form>
-            <p id="responseMessage"></p>
-        </section>
+        <div id="anime-suggestion-form">
+    <h2>Trimite o sugestie de anime</h2>
+    <input type="text" id="animeName" placeholder="Numele anime-ului">
+    <textarea id="animeReason" placeholder="De ce ar trebui adăugat?"></textarea>
+    <button id="sendSuggestionBtn">Trimite sugestia</button>
+    <p id="responseMsg"></p>
+</div>
+
     </main>    
 
     <footer>
@@ -79,29 +80,37 @@ session_start();
 
     <!-- 🧠 Script AJAX -->
     <script>
-    document.getElementById("animeSuggestionForm").addEventListener("submit", function(e) {
-        e.preventDefault(); // împiedică trimiterea clasică a formularului
+$(document).ready(function() {
+    $('#sendSuggestionBtn').click(function(e) {
+        e.preventDefault();
 
-        const animeName = document.getElementById("anime_name").value;
-        const animeReason = document.getElementById("anime_reason").value;
+        var name = $('#animeName').val().trim();
+        var reason = $('#animeReason').val().trim();
 
-        fetch("link/suggestion.php", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
+        if (name === '' || reason === '') {
+            $('#responseMsg').text('Completează toate câmpurile.').css('color', 'red');
+            return;
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: 'link/suggestion.php',
+            data: {
+                anime_name: name,
+                anime_reason: reason
             },
-            body: `anime_name=${encodeURIComponent(animeName)}&anime_reason=${encodeURIComponent(animeReason)}`
-        })
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById("responseMessage").textContent = data;
-            document.getElementById("animeSuggestionForm").reset();
-        })
-        .catch(error => {
-            document.getElementById("responseMessage").textContent = "A apărut o eroare!";
-            console.error("Eroare:", error);
+            success: function(response) {
+                $('#responseMsg').text(response).css('color', 'green');
+                $('#animeName').val('');
+                $('#animeReason').val('');
+            },
+            error: function() {
+                $('#responseMsg').text('A apărut o eroare.').css('color', 'red');
+            }
         });
     });
-    </script>
+});
+</script>
+
 </body>
 </html>
