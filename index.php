@@ -16,14 +16,13 @@ session_start();
     <div class="header-nav"> 
         <h1>AniDark</h1>
         <nav>
-            <a href="DataBaze.php">DataBaze</a>
+            <a href="#orar">Orarul Serialelor</a>
             <a href="link/Chat.php">Chat</a>
             <a href="link/tech-support.php">Tech Support</a>
             <a href="#link-uri">Link-uri</a>
 
             <?php if (isset($_SESSION["user_id"]) && !empty($_SESSION["user_id"])): ?>
-                <a href="link/profile.php">Profil</a>
-                <a href="link/logout.php">Logout</a>
+                <a href="logout.php">Logout</a>
             <?php else: ?>
                 <a href="link/login.php">Login</a>
                 <a href="link/register.php">Înregistrare</a>
@@ -38,9 +37,9 @@ session_start();
                     </span>
                 </label>
             </div>
-        </nav>
+        </nav>      
     </div>
-    
+
     <main>
         <div class="container">
             <a href="link/jujutsu-kaisen.php" class="card">
@@ -48,22 +47,61 @@ session_start();
                 <h3>Jujutsu Kaisen</h3>
                 <p>Un student de liceu devine parte dintr-o lume secretă a blestemelor și vrăjitorilor.</p>
             </a>
-            
+
             <a href="link/solo-leveling.php" class="card">
                 <img src="https://m.media-amazon.com/images/I/81jS951SgDL.jpg" alt="Solo Leveling">
                 <h3>Solo Leveling</h3>
                 <p>Un vânător slab descoperă un sistem misterios care îl ajută să devină cel mai puternic.</p>
             </a>
-            
+
             <a href="link/one-piece.php" class="card">
                 <img src="https://images.justwatch.com/poster/310515848/s718/one-piece.jpg" alt="One Piece">
                 <h3>One Piece</h3>
                 <p>Aventurile piraților în căutarea comorii supreme, One Piece.</p>
             </a>
         </div>
+
+        <!-- 🔽 Formular AJAX pentru sugestii -->
+        <section class="suggestion-form">
+            <h2>Trimite o sugestie de anime</h2>
+            <form id="animeSuggestionForm">
+                <input type="text" name="anime_name" id="anime_name" placeholder="Numele anime-ului" required>
+                <textarea name="anime_reason" id="anime_reason" placeholder="De ce ar trebui adăugat?" required></textarea>
+                <button type="submit">Trimite</button>
+            </form>
+            <p id="responseMessage"></p>
+        </section>
     </main>    
+
     <footer>
         © 2025 Seriale Anime - Toate drepturile sunt ale mele.
     </footer>
+
+    <!-- 🧠 Script AJAX -->
+    <script>
+    document.getElementById("animeSuggestionForm").addEventListener("submit", function(e) {
+        e.preventDefault(); // împiedică trimiterea clasică a formularului
+
+        const animeName = document.getElementById("anime_name").value;
+        const animeReason = document.getElementById("anime_reason").value;
+
+        fetch("link/suggestion.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `anime_name=${encodeURIComponent(animeName)}&anime_reason=${encodeURIComponent(animeReason)}`
+        })
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("responseMessage").textContent = data;
+            document.getElementById("animeSuggestionForm").reset();
+        })
+        .catch(error => {
+            document.getElementById("responseMessage").textContent = "A apărut o eroare!";
+            console.error("Eroare:", error);
+        });
+    });
+    </script>
 </body>
 </html>

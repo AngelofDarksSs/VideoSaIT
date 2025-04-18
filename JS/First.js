@@ -108,4 +108,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     toggleSwitch.addEventListener("change", updateParticlesColor);
+    
 });
